@@ -1,0 +1,112 @@
+¿Qué es un conflicto?
+Un conflicto en Git ocurre cuando dos o más personas (o ramas) hacen cambios diferentes en la misma parte de un archivo y Git no puede decidir cuál versión conservar automáticamente.
+
+¿Cuándo ocurre un conflicto?
+- Cuando se hace un merge entre ramas que tienen cambios en la misma línea de un archivo.
+- Cuando se aplican cambios locales que chocan con actualizaciones remotas.
+
+¿Es bueno o malo?
+No es ni bueno ni malo, es una señal de que hay cambios incompatibles que deben resolverse manualmente para asegurar que el proyecto siga funcionando correctamente.
+
+¿Se puede evitar un conflicto? ¿Cómo?
+No se pueden evitar al 100%, pero se pueden reducir con buenas prácticas:
+- Actualizar frecuentemente para tener los últimos cambios.
+- Hacer commits pequeños.
+- Comunicarte con tu equipo si estás editando los mismos archivos.
+- Dividir tareas en ramas diferentes que no toquen las mismas partes del código.
+
+
+10.
+$ git diff main suprema
+diff --git a/Actividades/3.conflicts/milanesa.txt b/Actividades/3.conflicts/milanesa.txt
+index 5255304..1c57c4d 100644
+--- a/Actividades/3.conflicts/milanesa.txt
++++ b/Actividades/3.conflicts/milanesa.txt
+@@ -1,2 +1,2 @@
+ pan rallado
+-lomo
+\ No newline at end of file
++pollo
+\ No newline at end of file
+
+Aitor15@Aitor MINGW64 ~/AWEB/Actividades/3.conflicts (bife)
+$ git diff main bife
+diff --git a/Actividades/3.conflicts/milanesa.txt b/Actividades/3.conflicts/milanesa.txt
+index 5255304..1712737 100644
+--- a/Actividades/3.conflicts/milanesa.txt
++++ b/Actividades/3.conflicts/milanesa.txt
+@@ -1,2 +1,2 @@
+ pan rallado
+-lomo
+\ No newline at end of file
++bife
+\ No newline at end of file
+
+Los cambios en las dos ramas.
+
+11.
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+no veo ningún cambio que he hecho.
+
+
+
+12.
+$ git merge bife
+Updating 64ae590..af17194
+Fast-forward
+ Actividades/3.conflicts/milanesa.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+sí
+
+
+13.
+$ git merge suprema
+Auto-merging Actividades/3.conflicts/milanesa.txt
+CONFLICT (content): Merge conflict in Actividades/3.conflicts/milanesa.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+no
+
+
+14.
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   milanesa.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+No se ha mezclado la milanesa y hay un conflicto.
+
+
+15.
+pan rallado
+<<<<<<< HEAD
+bife
+=======
+pollo
+>>>>>>> suprema
+
+Se ve el conflicto
