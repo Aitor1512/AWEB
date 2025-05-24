@@ -1,0 +1,303 @@
+¿Qué es un branch?
+Un branch es una línea de desarrollo independiente dentro de un repositorio. Permite trabajar en nuevas funcionalidades sin afectar la rama principal.
+
+¿Por qué pueden ser útiles los branches?
+- Permiten desarrollar nuevas características sin afectar el código principal.
+- Cada desarrollador puede trabajar en su propia rama.
+- Se pueden usar para pruebas, corrección de errores, nuevas funcionalidades, etc.
+
+¿Cómo se crea una branch?
+git branch nombre-de-la-rama
+
+¿Cómo se cambia a una branch?
+git checkout nombre-de-la-rama
+
+¿Cómo se elimina una branch?
+git branch -D nombre-de-la-rama
+
+¿Cómo se crea una branch y se cambia a ella en un solo paso?
+git checkout -b nombre-de-la-rama
+
+¿Qué es un merge?
+Un merge es el proceso de combinar los cambios de una rama en otra.
+
+¿Cómo se realiza un merge?
+Primero cambias a la rama donde quieres fusionar:
+git checkout main
+Luego haces el merge:
+git merge nombre-de-la-rama
+
+¿Qué es un tag?
+Un tag es una referencia fija que marca un punto específico en el historial del proyecto.
+
+¿Cómo se crea un tag?
+git tag -a nombre-del-tag -m "mensaje del tag"
+
+
+
+3.
+$ git branch
+* experimento_master
+  main
+
+5.
+$ git graph
+* ac59a8a (HEAD -> experimento_master) Agregue oregano a mi pizza.txt
+* 1fb7078 Agregue albahaca a mi pizza.txt
+* fcf7556 (origin/main, origin/HEAD, main) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+
+6.
+Estoy trabajando en otra rama dieferente. El head es diefernte al main.
+
+10.
+$ git graph
+* d5add90 (HEAD -> anana) Agregue anana a mi pizza.txt
+| * ac59a8a (experimento_master) Agregue oregano a mi pizza.txt
+| * 1fb7078 Agregue albahaca a mi pizza.txt
+|/
+* fcf7556 (origin/main, origin/HEAD, main) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+ Que se ha creado una rama.
+
+
+13.
+$ git graph
+* d8417d0 (HEAD -> main) Agregue cebolla a mi pizza.txt
+| * d5add90 (anana) Agregue anana a mi pizza.txt
+|/
+| * ac59a8a (experimento_master) Agregue oregano a mi pizza.txt
+| * 1fb7078 Agregue albahaca a mi pizza.txt
+|/
+* fcf7556 (origin/main, origin/HEAD) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+
+Que he agregado la cebolla.Y aparecen las dos ramaaas
+
+
+15.
+$ git graph
+*   3c05b9d (HEAD -> main) Merge branch 'anana'
+|\
+| * d5add90 (anana) Agregue anana a mi pizza.txt
+* | d8417d0 Agregue cebolla a mi pizza.txt
+|/
+| * ac59a8a (experimento_master) Agregue oregano a mi pizza.txt
+| * 1fb7078 Agregue albahaca a mi pizza.txt
+|/
+* fcf7556 (origin/main, origin/HEAD) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+
+Que se han juntado las ramas.
+
+
+16,
+$ git branch --merged
+  anana
+* main
+
+
+
+18.
+$ git graph
+*   89da00c (HEAD -> main) Merge branch 'experimento_master'
+|\
+| * ac59a8a (experimento_master) Agregue oregano a mi pizza.txt
+| * 1fb7078 Agregue albahaca a mi pizza.txt
+* |   3c05b9d Merge branch 'anana'
+|\ \
+| * | d5add90 (anana) Agregue anana a mi pizza.txt
+| |/
+* / d8417d0 Agregue cebolla a mi pizza.txt
+|/
+* fcf7556 (origin/main, origin/HEAD) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+
+Se han unido todas las ramas a main.
+
+
+19.
+
+No , git resolvió el conflicto automáticamente.
+
+
+20.
+$ git branch --merge
+  anana
+  experimento_master
+* main
+
+
+23.
+$  git branch --merged
+* main
+
+
+24.
+ git graph
+*   89da00c (HEAD -> main) Merge branch 'experimento_master'
+|\
+| * ac59a8a Agregue oregano a mi pizza.txt
+| * 1fb7078 Agregue albahaca a mi pizza.txt
+* |   3c05b9d Merge branch 'anana'
+|\ \
+| * | d5add90 Agregue anana a mi pizza.txt
+| |/
+* / d8417d0 Agregue cebolla a mi pizza.txt
+|/
+* fcf7556 (origin/main, origin/HEAD) Agrego Aitor_Ortega.txt
+* fb64816 Elimino mi sandwich2_feo.txt
+* e9ccbd6 Agrego mi sandwich2_feo.txt
+* 8a053ec Agrego mi sandwich.txt
+* 98666df Update README.md
+* 34ce0fa Update README.md
+* 27ae2d4 Update README.md
+* f6afc25 Add files via upload
+* 9d8e0e2 Delete tallergitprog1-main directory
+* 88fecc1 Add files via upload
+* 3a7d285 Update estilos
+* dac6aed Rename estilos.md to estilos
+* b15c251 Update estilos.md
+* 4327ba9 Update and rename archivo_1.md to estilos.md
+* 67da0bb Create archivo_1.md
+*   167f211 Merge pull request #1 from Lidia-lcm/rama-local
+|\
+| * ddcaf01 Creacion de carpeta y subida de imagen
+|/
+* 175fc71 Update README.md
+* 7103b6a Initial commit
+
+Se han eliminado los nombres de las ramas.
+
+
+
+26
+$  git tag
+pizza
+
+
+
+27.
+$ git show pizza
+tag pizza
+Tagger: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 19:57:15 2025 +0200
+
+Receta de la pizza.
+
+commit 89da00c584967b6d0a0cd75b240b510854c507f2 (HEAD -> main, tag: pizza)
+Merge: 3c05b9d ac59a8a
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 19:51:09 2025 +0200
+
+    Merge branch 'experimento_master'
+
+diff --cc Actividades/2.branchs/pizza.txt
+index 961bd26,b523cb9..e605624
+--- a/Actividades/2.branchs/pizza.txt
++++ b/Actividades/2.branchs/pizza.txt
+@@@ -1,5 -1,5 +1,7 @@@
++ oregano
++ albahaca
+  queso
+ +anana
+  salsa de tomate
+ +cebolla
+  masa de pizza
+
+
