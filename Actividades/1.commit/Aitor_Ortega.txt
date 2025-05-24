@@ -1,0 +1,458 @@
+¿Cómo se inicializa un repositorio local?
+git init
+
+¿Cómo hago para que un directorio deje de ser controlado por Git?
+Para que un directorio deje de ser controlado, se borra la carpeta oculta .git dentro de ese directorio, que es donde Git guarda toda la información de control de versiones.
+
+Si agrego un archivo a un directorio que ya está siendo controlado por Git, ¿está siendo controlado por Git?
+No automáticamente. El archivo estará en el PC, pero Git solo controla los archivos que se han agregado explícitamente con git add para que Git lo controle.
+
+
+¿Qué comando se utiliza para agregar un archivo al repositorio local?
+git add <nombre-del-archivo>
+
+
+¿Cómo determino qué archivos fueron modificados?
+git status
+
+
+
+¿Qué comando se utiliza para hacer un commit?
+git commit -m "Mensaje que describe los cambios"
+
+
+¿Qué es un commit?
+Un commit es como tomar una foto del estado actual del proyecto. Guarda un punto en el tiempo con todos los cambios, para que se pueda volver a ese estado más adelante o compartirlo con otros. Es la forma en que Git registra el historial del proyecto.
+
+
+3.
+Aitor15@Aitor MINGW64 ~/AWEB/Actividades/1.commit (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+On branch main: Estoy trabajando en la rama principal (main).
+
+Your branch is up to date with 'origin/main': La copia del PC está sincronizada con la versión en el servidor.
+
+Changes not staged for commit: Hay archivos modificados, pero aún no se agregaron a staging. sandwich.txt fue modificado.
+
+Untracked files: Hay archivos nuevos que Git aún no está rastreando. Aitor_Ortega.txt es un archivo nuevo que nunca ha sido agregado con git add.
+
+4.
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+5. El cambio es de changes not stanged for commit a changes to be commited. Eso significa que el archivo sandwich.txt fue modificado y agregado a staging con git add y está listo para ser incluido en el próximo commit.
+7.
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Ya no aparecen los changes to be commited porque he hecho un commit de sándwich.txt y ahora esta también en git.
+
+9.
+$ git log
+commit 8a053ec3259e627137feac4828d2243387ece973 (HEAD -> main)
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 18:42:46 2025 +0200
+
+    Agrego mi sandwich.txt
+
+commit 98666df3de233541237d55de82a11068c1ae34a7 (origin/main, origin/HEAD)
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:50:12 2025 +0200
+
+    Update README.md
+
+commit 34ce0fa8f49eb4def8ee162ef152c0ad2510e9ab
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:49:17 2025 +0200
+
+    Update README.md
+
+commit 27ae2d4633df71d57f8caf6eba02df8e94cf9d91
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:23:35 2025 +0200
+
+    Update README.md
+
+commit f6afc2592973b03bb453145cc563f6f7074c9a7f
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:19:50 2025 +0200
+
+    Add files via upload
+
+commit 9d8e0e2b6cf30f98c92b1a78f14aeeee44b4e3bb
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:18:57 2025 +0200
+
+    Delete tallergitprog1-main directory
+
+commit 88fecc16a122d865f9d8558fc4cef1eedd2f209b
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:17:39 2025 +0200
+
+    Add files via upload
+
+commit 3a7d2855c5b4f45be24cdfef97d8cbde7affedc9
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 11:27:56 2025 +0200
+
+    Update estilos
+
+    Añado 6 g extra al final de la línea 4
+
+commit dac6aed44b369c825b775155c6083a34a8410c69
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 11:15:24 2025 +0200
+
+    Rename estilos.md to estilos
+
+commit b15c251307a269207133e51078f926c31846f28d
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 10:42:50 2025 +0200
+
+    Update estilos.md
+
+    Añado un segundo título.
+    Borro la palabra grammar de la primera línea
+
+commit 4327ba9c46eff663d9662d0b0f9eabb8a2157597
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 10:32:24 2025 +0200
+
+    Update and rename archivo_1.md to estilos.md
+
+Es el histórico de commit del repositorio. Sale el commit mas actual arriba primero. 
+
+10.1
+$ git log --oneline
+8a053ec (HEAD -> main) Agrego mi sandwich.txt
+98666df (origin/main, origin/HEAD) Update README.md
+34ce0fa Update README.md
+27ae2d4 Update README.md
+f6afc25 Add files via upload
+9d8e0e2 Delete tallergitprog1-main directory
+88fecc1 Add files via upload
+3a7d285 Update estilos
+dac6aed Rename estilos.md to estilos
+b15c251 Update estilos.md
+4327ba9 Update and rename archivo_1.md to estilos.md
+67da0bb Create archivo_1.md
+167f211 Merge pull request #1 from Lidia-lcm/rama-local
+ddcaf01 Creacion de carpeta y subida de imagen
+175fc71 Update README.md
+7103b6a Initial commit
+
+10.2
+$ git log --stat
+commit 8a053ec3259e627137feac4828d2243387ece973 (HEAD -> main)
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 18:42:46 2025 +0200
+
+    Agrego mi sandwich.txt
+
+ Actividades/1.commit/sandwich.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 98666df3de233541237d55de82a11068c1ae34a7 (origin/main, origin/HEAD)
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:50:12 2025 +0200
+
+    Update README.md
+
+ Actividades/1.commit/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 34ce0fa8f49eb4def8ee162ef152c0ad2510e9ab
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:49:17 2025 +0200
+
+    Update README.md
+
+ Actividades/1.commit/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 27ae2d4633df71d57f8caf6eba02df8e94cf9d91
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:23:35 2025 +0200
+
+    Update README.md
+
+ Actividades/README.md | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+commit f6afc2592973b03bb453145cc563f6f7074c9a7f
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:19:50 2025 +0200
+
+    Add files via upload
+
+ Actividades/1.commit/README.md       | 55 +++++++++++++++++++++++++
+ Actividades/1.commit/sandwich.txt    |  4 ++
+ Actividades/2.branchs/README.md      | 78 ++++++++++++++++++++++++++++++++++++
+ Actividades/2.branchs/pizza.txt      |  3 ++
+ Actividades/3.conflicts/README.md    | 48 ++++++++++++++++++++++
+ Actividades/3.conflicts/milanesa.txt |  2 +
+ Actividades/README.md                | 54 +++++++++++++++++++++++++
+ 7 files changed, 244 insertions(+)
+
+commit 9d8e0e2b6cf30f98c92b1a78f14aeeee44b4e3bb
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:18:57 2025 +0200
+
+    Delete tallergitprog1-main directory
+
+ tallergitprog1-main/1.commit/README.md       | 55 --------------------
+ tallergitprog1-main/1.commit/sandwich.txt    |  4 --
+ tallergitprog1-main/2.branchs/README.md      | 78 ----------------------------
+ tallergitprog1-main/2.branchs/pizza.txt      |  3 --
+ tallergitprog1-main/3.conflicts/README.md    | 48 -----------------
+ tallergitprog1-main/3.conflicts/milanesa.txt |  2 -
+ tallergitprog1-main/README.md                | 54 -------------------
+ 7 files changed, 244 deletions(-)
+
+commit 88fecc16a122d865f9d8558fc4cef1eedd2f209b
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:17:39 2025 +0200
+
+En el oneline pone solo el nombre de los commits y en el otro aparece más información como los archivos que se añaden y se quitan.
+
+11.
+$ git diff 8a053ec
+diff --git a/Actividades/1.commit/sandwich.txt b/Actividades/1.commit/sandwich.txt
+index 8e97fda..456296e 100644
+--- a/Actividades/1.commit/sandwich.txt
++++ b/Actividades/1.commit/sandwich.txt
+@@ -3,4 +3,5 @@ queso
+ tomate
+ pepino
+ medallón
++mayonesa
+ pan
+\ No newline at end of file
+
+Sirve para ver la diferencia entre un commit y el fichero de mi ordenador.
+
+14.
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   sandwich2_feo.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+Hay un nuevo archivo  sandwich2_feo.txt
+
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git log --oneline
+e9ccbd6 (HEAD -> main) Agrego mi sandwich2_feo.txt
+8a053ec Agrego mi sandwich.txt
+98666df (origin/main, origin/HEAD) Update README.md
+34ce0fa Update README.md
+27ae2d4 Update README.md
+f6afc25 Add files via upload
+9d8e0e2 Delete tallergitprog1-main directory
+88fecc1 Add files via upload
+3a7d285 Update estilos
+dac6aed Rename estilos.md to estilos
+b15c251 Update estilos.md
+4327ba9 Update and rename archivo_1.md to estilos.md
+67da0bb Create archivo_1.md
+167f211 Merge pull request #1 from Lidia-lcm/rama-local
+ddcaf01 Creacion de carpeta y subida de imagen
+175fc71 Update README.md
+7103b6a Initial commit
+
+He añadido un nuevo commit.
+
+
+15.
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    sandwich2_feo.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sandwich.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Aitor_Ortega.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git log --oneline
+fb64816 (HEAD -> main) Elimino mi sandwich2_feo.txt
+e9ccbd6 Agrego mi sandwich2_feo.txt
+8a053ec Agrego mi sandwich.txt
+98666df (origin/main, origin/HEAD) Update README.md
+34ce0fa Update README.md
+27ae2d4 Update README.md
+f6afc25 Add files via upload
+9d8e0e2 Delete tallergitprog1-main directory
+88fecc1 Add files via upload
+3a7d285 Update estilos
+dac6aed Rename estilos.md to estilos
+b15c251 Update estilos.md
+4327ba9 Update and rename archivo_1.md to estilos.md
+67da0bb Create archivo_1.md
+167f211 Merge pull request #1 from Lidia-lcm/rama-local
+ddcaf01 Creacion de carpeta y subida de imagen
+175fc71 Update README.md
+7103b6a Initial commit
+
+He eliminado sandwich2_feo.txt
+
+
+16.
+$ git log --stat
+commit fb648163b796da8d1087d8ad4b38d037ab7b1037 (HEAD -> main)
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 19:13:37 2025 +0200
+
+    Elimino mi sandwich2_feo.txt
+
+ Actividades/1.commit/sandwich2_feo.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+commit e9ccbd6d93783e917dd782fe51b25475f36c3848
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 19:10:20 2025 +0200
+
+    Agrego mi sandwich2_feo.txt
+
+ Actividades/1.commit/sandwich2_feo.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 8a053ec3259e627137feac4828d2243387ece973
+Author: Aitor Ortega Rey <aitor1512@gmail.com>
+Date:   Sat May 24 18:42:46 2025 +0200
+
+    Agrego mi sandwich.txt
+
+ Actividades/1.commit/sandwich.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 98666df3de233541237d55de82a11068c1ae34a7 (origin/main, origin/HEAD)
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:50:12 2025 +0200
+
+    Update README.md
+
+ Actividades/1.commit/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 34ce0fa8f49eb4def8ee162ef152c0ad2510e9ab
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Tue May 20 13:49:17 2025 +0200
+
+    Update README.md
+
+ Actividades/1.commit/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 27ae2d4633df71d57f8caf6eba02df8e94cf9d91
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:23:35 2025 +0200
+
+    Update README.md
+
+ Actividades/README.md | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+commit f6afc2592973b03bb453145cc563f6f7074c9a7f
+Author: Lidia-lcm <lidialacalm@gmail.com>
+Date:   Mon May 12 12:19:50 2025 +0200
+
+    Add files via upload
+
+ Actividades/1.commit/README.md       | 55 +++++++++++++++++++++++++
+ Actividades/1.commit/sandwich.txt    |  4 ++
+ Actividades/2.branchs/README.md      | 78 ++++++++++++++++++++++++++++++++++++
+ Actividades/2.branchs/pizza.txt      |  3 ++
+ Actividades/3.conflicts/README.md    | 48 ++++++++++++++++++++++
+ Actividades/3.conflicts/milanesa.txt |  2 +
+ Actividades/README.md                | 54 +++++++++++++++++++++++++
+ 7 files changed, 244 insertions(+)
+
+
+Son todos los cambios, y los ficheros que se añade y se eliminan.
+
+
